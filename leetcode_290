@@ -1,0 +1,28 @@
+import java.util.HashMap;
+class Solution {
+    public boolean wordPattern(String pattern, String s) {
+        HashMap<Character,String>info=new HashMap<>();
+        HashMap<String,Character>info1=new HashMap<>();
+        String s1[]=s.split(" ");
+        if(pattern.length()!=s1.length){
+            return false;
+        }
+
+        for(int i=0;i<pattern.length();i++){
+           char c=pattern.charAt(i);
+           String se=s1[i];
+            if(info.containsKey(c)){
+                if(!info.get(c).equals(se)){
+                      return false;
+                }
+           
+        }
+           if(info1.containsKey(se)&&info1.get(se)!=c){
+            return false;
+           }
+        info.put(c,se);
+        info1.put(se,c);
+        }
+        return true;
+    }
+}
